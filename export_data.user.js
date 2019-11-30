@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Export data from a mybb.ru forum
 // @namespace    programmers.forumsvn.com
-// @version      1.1.0
+// @version      1.2.0
 // @description  adds exportThreads function to export the specified threads
 // @author       Alex P
 // @include      *programmers.forumsvn.com/*
@@ -116,6 +116,14 @@
         };
     }
 
+    function extractUsers(threads) {
+        return _.sortedUniqBy(
+            _.sortBy(
+                _.flattenDeep(threads.map(t => t.posts.map(p => p.author))),
+                'id'),
+            'id');
+    }
+
     window.exportThreads = async function (...ids) {
         let threads = [];
         for (const id of ids) {
@@ -127,12 +135,15 @@
             }
         }
 
+        const users = extractUsers(threads);
+
         const zip = new JSZip();
 
         const ZIP_ROOT = 'mybbru_export/';
         const dtStr = moment().format('YYYY-MM-DD_HH-mm-ss');
 
         zip.file(`${ZIP_ROOT}threads_${dtStr}.json`, JSON.stringify(threads, null, '  '));
+        zip.file(`${ZIP_ROOT}users_${dtStr}.json`, JSON.stringify(users, null, '  '));
 
         const zipBlob = await zip.generateAsync({
             type: "blob",
