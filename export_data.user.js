@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Export data from a mybb.ru forum
 // @namespace    programmers.forumsvn.com
-// @version      1.2.0
+// @version      1.2.1
 // @description  adds exportThreads function to export the specified threads
 // @author       Alex P
 // @include      *programmers.forumsvn.com/*
@@ -36,16 +36,16 @@
         return {
             title: htmlDoc.title,
             category: {
-                id: new URL(categoryLink.href).searchParams.get('id'),
+                id: Number(new URL(categoryLink.href).searchParams.get('id')),
                 name: categoryLink.textContent.trim(),
             },
-            pageCount: lastPageLink ? parseInt(lastPageLink.textContent.trim()) : 1,
+            pageCount: lastPageLink ? Number(lastPageLink.textContent.trim()) : 1,
             posts: Array.from(posts).map(el => {
                 const emailLink = el.querySelector('.pl-email a[href^="mailto:"]');
                 return {
-                    id: el.id.replace('p', ''),
+                    id: Number(el.id.replace('p', '')),
                     author: {
-                        id: new URL(el.querySelector('.pl-email a[href*="profile.php"]').href).searchParams.get('id'),
+                        id: Number(new URL(el.querySelector('.pl-email a[href*="profile.php"]').href).searchParams.get('id')),
                         name: el.querySelector('.pa-author a').textContent,
                         email: emailLink ? emailLink.href.substring(7) : null,
                     },
