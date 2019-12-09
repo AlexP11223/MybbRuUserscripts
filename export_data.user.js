@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Export data from a mybb.ru forum
 // @namespace    programmers.forumsvn.com
-// @version      1.2.1
+// @version      1.3.0
 // @description  adds exportThreads function to export the specified threads
 // @author       Alex P
 // @include      *programmers.forumsvn.com/*
@@ -44,6 +44,7 @@
                 const emailLink = el.querySelector('.pl-email a[href^="mailto:"]');
                 return {
                     id: Number(el.id.replace('p', '')),
+                    createdAt: Number(el.getAttribute('data-posted')),
                     author: {
                         id: Number(new URL(el.querySelector('.pl-email a[href*="profile.php"]').href).searchParams.get('id')),
                         name: el.querySelector('.pa-author a').textContent,
