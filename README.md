@@ -17,12 +17,14 @@ Output example:
     "posts": [
       {
         "id": 2,
+        "createdAt": 1573161738,
         "author": { "id": 3, "name": "Vadim", "email": "mail_1@gmail.com" },
         "source": "[b]Hello world![/b]"
       },
       ...
       {
         "id": 396,
+        "createdAt": 1574765951,
         "author": { "id": 9, "name": "Serge", "email": "mail_2@gmail.com" },
         "source": "[quote=\"Username\"]Hello[/quote]\nWelcome!"
       },
@@ -32,6 +34,8 @@ Output example:
   ...
 ]
 ```
+
+`createdAt` is a Unix timestamp, UTC +0.
 
 Also extracts users to a separate file.
 
