@@ -1,4 +1,4 @@
-UserScripts for a http://mybb.ru forum, tested on http://programmers.forumsvn.com in December 2019, but probably works on other forums created via this service.
+UserScripts for a http://mybb.ru forum, tested on http://programmers.forumsvn.com in December 2019, but probably also work on other forums created via this service.
 The scripts were tested using TamperMonkey in modern versions of Chrome and Firefox (also may work in GreaseMonkey).
 
 ## [Export data](https://github.com/AlexP11223/MybbRuUserscripts/blob/master/export_data.user.js)
