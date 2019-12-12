@@ -1,9 +1,11 @@
-UserScripts for a http://mybb.ru forum, tested on http://programmers.forumsvn.com in December 2019, but probably also work on other forums created via this service.
+UserScripts for a http://mybb.ru forum, tested on http://programmers.forumsvn.com in December 2019 (when were moving to Discourse on https://www.programmersforum.rocks), but probably also work on other forums created via this service.
 The scripts were tested using TamperMonkey in modern versions of Chrome and Firefox (also may work in GreaseMonkey).
 
 ## [Export data](https://github.com/AlexP11223/MybbRuUserscripts/blob/master/export_data.user.js)
 
 Exports data from a mybb.ru forum (they do not allow to do that normally) to JSON. Requires admin/moderator rights to retrieve the message source text (BB codes, etc.).
+
+There a script for [importing this format into Discourse](https://github.com/AlexP11223/discourse/blob/mybbru/script/import_scripts/mybbru.rb).
 
 Output example:
 
